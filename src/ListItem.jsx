@@ -1,6 +1,13 @@
 import { ReactComponent as Dot } from "./images/dot.svg";
 
-const ListItem = ({ list }) => {
+const ListItem = ({ list, filterTags, setFilterTags }) => {
+  const handleFilterTags = (e) => {
+    const language = e.target.value;
+    const exist = filterTags.indexOf(language) > -1;
+    if (!exist) {
+      setFilterTags([...filterTags, language]);
+    }
+  };
   return (
     <div
       className={`bg-[white] rounded-md shadow-sm border-l-[5px] font-default ${
@@ -17,13 +24,25 @@ const ListItem = ({ list }) => {
             />
           </div>
           <div>
-            <div className="flex mt-5 sm:mt-0">
-              <div className="mr-5">{list.company}</div>
-              {list.new ? <div className="mr-3">NEW</div> : ""}
-              {list.featured ? <div>FEATURED</div> : ""}
+            <div className="flex items-center mt-5 sm:mt-0">
+              <div className="mr-5 text-textCyan">{list.company}</div>
+              {list.new ? (
+                <div className="mr-3 bg-textCyan text-[white] pt-1 px-2 rounded-new">
+                  NEW!
+                </div>
+              ) : (
+                ""
+              )}
+              {list.featured ? (
+                <div className="mr-3 bg-vdg text-[white] pt-1 px-2 rounded-new">
+                  FEATURED
+                </div>
+              ) : (
+                ""
+              )}
             </div>
-            <div>{list.position}</div>
-            <ul className="flex items-center justify-between w-[60%] min-w-[205px] max-w-[258px]">
+            <div className="text-vdg">{list.position}</div>
+            <ul className="flex items-center justify-between w-[60%] min-w-[205px] max-w-[258px] text-dg">
               <li>{list.postedAt}</li>
               <li>
                 <Dot />
@@ -40,8 +59,13 @@ const ListItem = ({ list }) => {
           {list.languages.map((language, index) => {
             return (
               <button
-                className="bg-lgcFilterTabs p-2 text-15 font-extrabold rounded-sm"
+                type="input"
+                value={language}
+                className="bg-lgcFilterTabs p-2 text-15 font-extrabold rounded-sm text-textCyan"
                 key={index}
+                onClick={(e) => {
+                  handleFilterTags(e);
+                }}
               >
                 {language}
               </button>
