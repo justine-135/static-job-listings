@@ -1,5 +1,5 @@
 import data from "./data.json";
-import Header from "./header";
+import Header from "./Header";
 import Listings from "./Listings";
 
 function App() {
