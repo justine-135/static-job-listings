@@ -4,7 +4,7 @@ import Listings from "./Listings";
 
 function App() {
   return (
-    <div className="App bg-lgcBg ">
+    <div className="App bg-lgcBg">
       <Header />
       <Listings data={data} />
     </div>
