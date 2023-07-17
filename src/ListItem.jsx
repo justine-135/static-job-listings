@@ -18,31 +18,33 @@ const ListItem = ({ list, filterTags, setFilterTags }) => {
         <div className="flex flex-col sm:flex-row sm:items-center">
           <div className="absolute sm:relative translate-y-[-80%] sm:translate-y-0 sm:mr-5">
             <img
-              className="h-[48px] w-[48px] sm:h-[90px] sm:w-[90px]"
+              className="h-[48px] w-[48px] sm:h-[90px] sm:w-[90px] sm:min-w-[90px]"
               src={require(`${list.logo}`)}
               alt=""
             />
           </div>
           <div>
-            <div className="flex items-center mt-5 sm:mt-0">
-              <div className="mr-5 text-textCyan">{list.company}</div>
+            <div className="flex items-center mt-5 sm:mt-0 text-15">
+              <div className="mr-5 text-textCyan font-bold">{list.company}</div>
               {list.new ? (
-                <div className="mr-3 bg-textCyan text-[white] pt-1 px-2 rounded-new">
+                <div className="mr-3 bg-textCyan text-[white] px-2 rounded-full">
                   NEW!
                 </div>
               ) : (
                 ""
               )}
               {list.featured ? (
-                <div className="mr-3 bg-vdg text-[white] pt-1 px-2 rounded-new">
+                <div className="mr-3 bg-vdg text-[white] px-2 rounded-full">
                   FEATURED
                 </div>
               ) : (
                 ""
               )}
             </div>
-            <div className="text-vdg">{list.position}</div>
-            <ul className="flex items-center justify-between w-[60%] min-w-[205px] max-w-[258px] text-dg">
+            <div className="font-bold text-vdg hover:text-textCyan cursor-pointer text-18">
+              {list.position}
+            </div>
+            <ul className="flex items-center justify-between w-[60%] min-w-[205px] max-w-[258px] text-dg text-15">
               <li>{list.postedAt}</li>
               <li>
                 <Dot />
@@ -61,7 +63,7 @@ const ListItem = ({ list, filterTags, setFilterTags }) => {
               <button
                 type="input"
                 value={language}
-                className="bg-lgcFilterTabs p-2 text-15 font-extrabold rounded-sm text-textCyan"
+                className="bg-lgcFilterTabs p-2 text-15 font-bold rounded-md text-textCyan hover:bg-textCyan hover:text-[white]"
                 key={index}
                 onClick={(e) => {
                   handleFilterTags(e);
