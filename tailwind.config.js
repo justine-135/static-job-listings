@@ -14,6 +14,10 @@ module.exports = {
       vdg: "hsl(180, 14%, 20%)",
       borderRight: "#5DA4A6",
       borderTopTags: "#BEC0BF",
+      textCyan: "#569B90",
+    },
+    borderRadius: {
+      new: "20px",
     },
     fontSize: {
       15: "0.938rem",
